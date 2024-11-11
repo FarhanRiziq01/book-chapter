@@ -19,11 +19,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $password = $_POST['password'];
     $password2 = $_POST['password2'];
 
-    // Validasi password
+    // Validasi sederhana
     if ($password !== $password2) {
-        echo "<script>
-                showMessage('Password tidak cocok!', false);
-              </script>";
+        echo "Password tidak cocok!";
         exit();
     }
 
@@ -36,15 +34,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $stmt->bind_param("sss", $username, $email, $hashed_password);
 
     if ($stmt->execute()) {
-        // Menampilkan modal sukses dan redirect ke login
-        echo "<script>
-                showMessage('Registrasi berhasil! Anda akan diarahkan ke halaman login.', true);
-              </script>";
+        echo "Registrasi berhasil!";
+        // Redirect atau arahkan ke halaman login setelah registrasi berhasil
+        // header("Location: login.html");
     } else {
-        // Menampilkan pesan error jika gagal
-        echo "<script>
-                showMessage('Error: " . $stmt->error . "', false);
-              </script>";
+        echo "Error: " . $stmt->error;
     }
 
     $stmt->close();
