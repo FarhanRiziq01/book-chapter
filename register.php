@@ -1,9 +1,14 @@
 <?php
+// Aktifkan error reporting
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+
 // Koneksi ke database
 $servername = "localhost";
 $username = "root";
-$password = ""; // ganti dengan password MySQL Anda jika ada
-$dbname = "book-chapter"; // nama database
+$password = "";
+$dbname = "book-chapter";
 
 $conn = new mysqli($servername, $username, $password, $dbname);
 
@@ -12,37 +17,66 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
-// Proses registrasi
+ob_start(); // Memulai output buffering
+
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $username = $_POST['username'];
     $email = $_POST['email'];
     $password = $_POST['password'];
     $password2 = $_POST['password2'];
 
-    // Validasi sederhana
     if ($password !== $password2) {
-        echo "Password tidak cocok!";
+        echo "<script src='https://cdn.jsdelivr.net/npm/sweetalert2@11'></script>";
+        echo "<script>
+                document.addEventListener('DOMContentLoaded', function() {
+                    Swal.fire({
+                      icon: 'error',
+                      title: 'Oops...',
+                      text: 'Password dan Re-type Password tidak cocok!'
+                    }).then((result) => {
+                      window.location.href = 'register.html';
+                    });
+                });
+              </script>";
         exit();
     }
 
-    // Hash password
     $hashed_password = password_hash($password, PASSWORD_DEFAULT);
-
-    // Insert data ke database
     $sql = "INSERT INTO users (username, email, password) VALUES (?, ?, ?)";
     $stmt = $conn->prepare($sql);
     $stmt->bind_param("sss", $username, $email, $hashed_password);
 
     if ($stmt->execute()) {
-        echo "Registrasi berhasil!";
-        // Redirect atau arahkan ke halaman login setelah registrasi berhasil
-        // header("Location: login.html");
+        echo "<script src='https://cdn.jsdelivr.net/npm/sweetalert2@11'></script>";
+        echo "<script>
+                document.addEventListener('DOMContentLoaded', function() {
+                    Swal.fire({
+                      icon: 'success',
+                      title: 'Registrasi Berhasil!',
+                      text: 'Anda akan diarahkan ke halaman login.'
+                    }).then((result) => {
+                      window.location.href = 'login.html';
+                    });
+                });
+              </script>";
     } else {
-        echo "Error: " . $stmt->error;
+        echo "<script src='https://cdn.jsdelivr.net/npm/sweetalert2@11'></script>";
+        echo "<script>
+                document.addEventListener('DOMContentLoaded', function() {
+                    Swal.fire({
+                      icon: 'error',
+                      title: 'Oops...',
+                      text: 'Error: " . $stmt->error . "'
+                    }).then((result) => {
+                      window.location.href = 'register.html';
+                    });
+                });
+              </script>";
     }
 
     $stmt->close();
 }
 
 $conn->close();
+ob_end_flush(); // Akhiri output buffering
 ?>

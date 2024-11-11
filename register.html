@@ -197,14 +197,27 @@
   <script src="js/messageModal.js"></script>
   <!-- jQuery, Bootstrap, dan SweetAlert2 -->
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-
-  <!-- Include file JavaScript messageModal -->
-  <script src="js/messageModal.js"></script>
 
 
   <script src="js/main.js"></script>
+  <script>
+    // Validasi sebelum submit form
+    document.getElementById("registerForm").addEventListener("submit", function(event) {
+      const password = document.getElementById("pword").value;
+      const password2 = document.getElementById("pword2").value;
+  
+      if (password !== password2) {
+        event.preventDefault(); // Menghentikan submit form jika password tidak cocok
+  
+        Swal.fire({
+          icon: "error",
+          title: "Oops...",
+          text: "Password dan Re-type Password tidak cocok!"
+        });
+      }
+    });
+  </script>
 
 </body>
 
