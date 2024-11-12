@@ -48,6 +48,7 @@ session_start(); // Memulai session untuk mengecek status login
       <div class="site-mobile-menu-body"></div>
     </div>
 
+
     <div class="py-2 bg-light">
       <div class="container">
         <div class="row align-items-center">
@@ -76,7 +77,6 @@ session_start(); // Memulai session untuk mengecek status login
         </div>
       </div>
     </div>
-
     <header class="site-navbar py-4 js-sticky-header site-navbar-target" role="banner">
 
       <div class="container">
@@ -89,7 +89,7 @@ session_start(); // Memulai session untuk mengecek status login
           <div class="mr-auto">
             <nav class="site-navigation position-relative text-right" role="navigation">
               <ul class="site-menu main-menu js-clone-nav mr-auto d-none d-lg-block">
-                <li class="active">
+                <li>
                   <a href="index.php" class="nav-link text-left">Home</a>
                 </li>
                 <li>
@@ -97,8 +97,8 @@ session_start(); // Memulai session untuk mengecek status login
                 </li>
                 <li>
                   <a href="book.php" class="nav-link text-left">Book</a>
-                </li>
-                <li>
+              </li>
+                <li class="active">
                   <a href="services.php" class="nav-link text-left">Services</a>
                 </li>
                 <li>
@@ -110,7 +110,7 @@ session_start(); // Memulai session untuk mengecek status login
               </ul>                                                                
             </nav>
 
-           </div>
+          </div>
           <div class="ml-auto">
             <div class="social-wrap">
               <a href="#"><span class="icon-facebook"></span></a>
@@ -127,55 +127,20 @@ session_start(); // Memulai session untuk mengecek status login
 
       </header>
 
-    <!-- Bagian konten utama -->
-    <div class="hero-slide owl-carousel site-blocks-cover">
-        <div class="intro-section" style="background-image: url('images/hero_1.jpg');">
-          <div class="container">
-            <div class="row align-items-center justify-content-center">
-              <div class="col-md-7 mx-auto text-center" data-aos="fade-up">
-                <h1>Book Keeping Consulting Agency</h1>
+
+      <div class="intro-section small" style="background-image: url('images/hero_2.jpg');">
+        <div class="container">
+          <div class="row align-items-center justify-content-center">
+            <div class="col-md-7 mx-auto text-center" data-aos="fade-up">
+              <div class="intro">
+                <h1>Services</h1>
                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sit, nihil.</p>
                 <p><a href="#" class="btn btn-primary">Get Started</a></p>
               </div>
             </div>
           </div>
         </div>
-        <div class="intro-section" style="background-image: url('images/hero_2.jpg');">
-          <div class="container">
-            <div class="row align-items-center justify-content-center">
-              <div class="col-md-7 mx-auto text-center" data-aos="fade-up">
-                <div class="intro">
-                  <h1>Financial Funds</h1>
-                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sit, nihil.</p>
-                  <p><a href="#" class="btn btn-primary">Get Started</a></p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
       </div>
-
-      <div class="site-section">
-        <div class="container">
-          <div class="row">
-            <div class="col-lg-6 mb-4 mb-lg-0">
-              <img src="images/hero_1.jpg" alt="Image" class="img-fluid">
-            </div>
-            <div class="col-lg-5 ml-auto">
-              <span class="caption">About Us</span>
-              <h2 class="title-with-line">Mindful Planning of Monetary Spending and Saving</h2>
-
-
-              <p class="mb-4">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sequi voluptate asperiores rem quis consectetur cum quae, ratione voluptatem aliquam sit aspernatur.</p>
-
-
-              
-              
-            </div>
-          </div>
-        </div>
-      </div>
-
 
       <div class="site-section bg-light pb-0">
         <div class="container">
@@ -289,21 +254,120 @@ session_start(); // Memulai session untuk mengecek status login
         </div>
       </div>
 
+      <!-- // 05 - Block -->
+      <div class="section-bg style-1" style="background-image: url('images/hero_1.jpg');">
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-7 text-center mx-auto">
+              <span class="caption text-white">Testimonials</span>
+              <h2 class="title-with-line text-center mb-5 text-white">Happy Clients</h2>
+            </div>
+          </div>
+
+
+          <div class="owl-slide owl-carousel owl-testimonial">
+
+            <div class="ftco-testimonial-1">
+              <div class="ftco-testimonial-vcard d-flex align-items-center mb-4">
+                <img src="images/person_1.jpg" alt="Image" class="img-fluid mr-3">
+                <div>
+                  <h3>Allison Holmes</h3>
+                  <span>Designer</span>
+                </div>
+              </div>
+              <div>
+                <p>&ldquo;Lorem ipsum dolor sit, amet consectetur adipisicing elit. Neque, mollitia. Possimus mollitia nobis libero quidem aut tempore dolore iure maiores, perferendis, provident numquam illum nisi amet necessitatibus. A, provident aperiam!&rdquo;</p>
+              </div>
+            </div>
+
+            <div class="ftco-testimonial-1">
+              <div class="ftco-testimonial-vcard d-flex align-items-center mb-4">
+                <img src="images/person_2.jpg" alt="Image" class="img-fluid mr-3">
+                <div>
+                  <h3>Allison Holmes</h3>
+                  <span>Designer</span>
+                </div>
+              </div>
+              <div>
+                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Neque, mollitia. Possimus mollitia nobis libero quidem aut tempore dolore iure maiores, perferendis, provident numquam illum nisi amet necessitatibus. A, provident aperiam!</p>
+              </div>
+            </div>
+
+            <div class="ftco-testimonial-1">
+              <div class="ftco-testimonial-vcard d-flex align-items-center mb-4">
+                <img src="images/person_4.jpg" alt="Image" class="img-fluid mr-3">
+                <div>
+                  <h3>Allison Holmes</h3>
+                  <span>Designer</span>
+                </div>
+              </div>
+              <div>
+                <p>&ldquo;Lorem ipsum dolor sit, amet consectetur adipisicing elit. Neque, mollitia. Possimus mollitia nobis libero quidem aut tempore dolore iure maiores, perferendis, provident numquam illum nisi amet necessitatibus. A, provident aperiam!&rdquo;</p>
+              </div>
+            </div>
+
+            <div class="ftco-testimonial-1">
+              <div class="ftco-testimonial-vcard d-flex align-items-center mb-4">
+                <img src="images/person_3.jpg" alt="Image" class="img-fluid mr-3">
+                <div>
+                  <h3>Allison Holmes</h3>
+                  <span>Designer</span>
+                </div>
+              </div>
+              <div>
+                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Neque, mollitia. Possimus mollitia nobis libero quidem aut tempore dolore iure maiores, perferendis, provident numquam illum nisi amet necessitatibus. A, provident aperiam!</p>
+              </div>
+            </div>
+
+            <div class="ftco-testimonial-1">
+              <div class="ftco-testimonial-vcard d-flex align-items-center mb-4">
+                <img src="images/person_2.jpg" alt="Image" class="img-fluid mr-3">
+                <div>
+                  <h3>Allison Holmes</h3>
+                  <span>Designer</span>
+                </div>
+              </div>
+              <div>
+                <p>&ldquo;Lorem ipsum dolor sit, amet consectetur adipisicing elit. Neque, mollitia. Possimus mollitia nobis libero quidem aut tempore dolore iure maiores, perferendis, provident numquam illum nisi amet necessitatibus. A, provident aperiam!&rdquo;</p>
+              </div>
+            </div>
+
+            <div class="ftco-testimonial-1">
+              <div class="ftco-testimonial-vcard d-flex align-items-center mb-4">
+                <img src="images/person_4.jpg" alt="Image" class="img-fluid mr-3">
+                <div>
+                  <h3>Allison Holmes</h3>
+                  <span>Designer</span>
+                </div>
+              </div>
+              <div>
+                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Neque, mollitia. Possimus mollitia nobis libero quidem aut tempore dolore iure maiores, perferendis, provident numquam illum nisi amet necessitatibus. A, provident aperiam!</p>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+
 
       
-
-
-      <div class="intro-section small" style="background-image: url('images/hero_1.jpg');">
+      <div class="site-section ftco-subscribe-1" style="background-image: url('images/hero_2.jpg')">
         <div class="container">
-          <div class="row align-items-center justify-content-center">
-            <div class="col-md-7 mx-auto text-center" data-aos="fade-up">
-              <h1>We Are Here To Help Grow Your Business </h1>
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sit, nihil.</p>
-              <p><a href="#" class="btn btn-primary">Get Started</a></p>
+          <div class="row align-items-center">
+            <div class="col-lg-7">
+              <h2>Subscribe to us!</h2>
+              <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia,</p>
+            </div>
+            <div class="col-lg-5">
+              <form action="" class="d-flex">
+                <input type="text" class="rounded form-control mr-2 py-3" placeholder="Enter your email">
+                <button class="btn btn-primary rounded py-3 px-4" type="submit">Send</button>
+              </form>
             </div>
           </div>
         </div>
-      </div>
+      </div> 
 
 
       <div class="footer">
@@ -382,6 +446,12 @@ session_start(); // Memulai session untuk mengecek status login
     <script src="js/jquery.fancybox.min.js"></script>
     <script src="js/jquery.sticky.js"></script>
     <script src="js/jquery.mb.YTPlayer.min.js"></script>
+
+
+
+
     <script src="js/main.js"></script>
-</body>
-</html>
+
+  </body>
+
+  </html>
