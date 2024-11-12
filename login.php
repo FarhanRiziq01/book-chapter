@@ -1,9 +1,11 @@
 <?php
+session_start(); // Mulai sesi
+
 // Koneksi ke database
 $servername = "localhost";
 $username = "root";
-$password = ""; // ganti dengan password MySQL Anda
-$dbname = "book-chapter"; // nama database
+$password = ""; // Ganti dengan password MySQL Anda jika ada
+$dbname = "book-chapter"; // Nama database
 
 $conn = new mysqli($servername, $username, $password, $dbname);
 
@@ -29,16 +31,20 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         // Verifikasi password
         if (password_verify($password, $user['password'])) {
-            // Jika berhasil login
+            // Jika berhasil login, simpan informasi pengguna ke session
+            $_SESSION['loggedin'] = true;
+            $_SESSION['username'] = $user['username'];
+
+            // Menampilkan pesan sukses dan redirect ke halaman utama
             echo "<script src='https://cdn.jsdelivr.net/npm/sweetalert2@11'></script>";
             echo "<script>
                     document.addEventListener('DOMContentLoaded', function() {
                         Swal.fire({
                           icon: 'success',
                           title: 'Login Berhasil!',
-                          text: 'Selamat datang, " . $user['email'] . "!'
+                          text: 'Selamat datang, " . $user['username'] . "!'
                         }).then((result) => {
-                          window.location.href = 'index.html';
+                          window.location.href = 'index.php';
                         });
                     });
                   </script>";
