@@ -5,53 +5,54 @@ session_start(); // Mulai sesi
 $servername = "localhost";
 $username = "root";
 $password = ""; // Ganti dengan password MySQL Anda jika ada
-$dbname = "book-chapter"; // Nama database
+$dbname = "book_chapter"; // Nama database
 
 $conn = new mysqli($servername, $username, $password, $dbname);
 
 // Cek koneksi
 if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
+  die("Connection failed: " . $conn->connect_error);
 }
 
 // Proses login
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $email = $_POST['email'];
-    $password = $_POST['password'];
+  $email = $_POST['email'];
+  $password = $_POST['password'];
 
-    // Query untuk mendapatkan pengguna berdasarkan email
-    $sql = "SELECT * FROM users WHERE email = ?";
-    $stmt = $conn->prepare($sql);
-    $stmt->bind_param("s", $email);
-    $stmt->execute();
-    $result = $stmt->get_result();
+  // Query untuk mendapatkan pengguna berdasarkan email
+  $sql = "SELECT * FROM users WHERE email = ?";
+  $stmt = $conn->prepare($sql);
+  $stmt->bind_param("s", $email);
+  $stmt->execute();
+  $result = $stmt->get_result();
 
-    if ($result->num_rows > 0) {
-        $user = $result->fetch_assoc();
+  if ($result->num_rows > 0) {
+    $user = $result->fetch_assoc();
 
-        // Verifikasi password
-        if (password_verify($password, $user['password'])) {
-            // Jika berhasil login, simpan informasi pengguna ke session
-            $_SESSION['loggedin'] = true;
-            $_SESSION['username'] = $user['username'];
+    // Verifikasi password
+    if (password_verify($password, $user['password'])) {
+      // Jika berhasil login, simpan informasi pengguna ke session
+      $_SESSION['loggedin'] = true;
+      $_SESSION['username'] = $user['username'];
+      header("Location: dashboard.php");
 
-            // Menampilkan pesan sukses dan redirect ke halaman utama
-            echo "<script src='https://cdn.jsdelivr.net/npm/sweetalert2@11'></script>";
-            echo "<script>
+      // Menampilkan pesan sukses dan redirect ke halaman utama
+      echo "<script src='https://cdn.jsdelivr.net/npm/sweetalert2@11'></script>";
+      echo "<script>
                     document.addEventListener('DOMContentLoaded', function() {
                         Swal.fire({
                           icon: 'success',
                           title: 'Login Berhasil!',
                           text: 'Selamat datang, " . $user['username'] . "!'
                         }).then((result) => {
-                          window.location.href = 'index.php';
+                          window.location.href = 'dashboard.php';
                         });
                     });
                   </script>";
-        } else {
-            // Password salah
-            echo "<script src='https://cdn.jsdelivr.net/npm/sweetalert2@11'></script>";
-            echo "<script>
+    } else {
+      // Password salah
+      echo "<script src='https://cdn.jsdelivr.net/npm/sweetalert2@11'></script>";
+      echo "<script>
                     document.addEventListener('DOMContentLoaded', function() {
                         Swal.fire({
                           icon: 'error',
@@ -62,11 +63,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         });
                     });
                   </script>";
-        }
-    } else {
-        // Email tidak ditemukan
-        echo "<script src='https://cdn.jsdelivr.net/npm/sweetalert2@11'></script>";
-        echo "<script>
+    }
+  } else {
+    // Email tidak ditemukan
+    echo "<script src='https://cdn.jsdelivr.net/npm/sweetalert2@11'></script>";
+    echo "<script>
                 document.addEventListener('DOMContentLoaded', function() {
                     Swal.fire({
                       icon: 'error',
@@ -77,10 +78,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     });
                 });
               </script>";
-    }
+  }
 
-    $stmt->close();
+  $stmt->close();
 }
 
 $conn->close();
-?>
